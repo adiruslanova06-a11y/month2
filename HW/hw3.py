@@ -1,47 +1,54 @@
-from abc import  ABC, abstractmethod
+from abc import ABC, abstractmethod
 
-class Hero(ABC):    
-    def __init__(self, name, health, strength, level):
-        self.name = name
-        self.__health= health
-        self.strength = strength
-        self.level = level
+
+
+class Hero(ABC):
+    def __init__(self, name,level, health,strengh):
+        self.name=name
+        self.level=level
+        self.__health=100
+        self.strength=strengh
 
     def greet(self):
-        print(f"Привет я, {self.name}! мой уровень {self.level} ")
+        print(f"Привет {self.name},{self.level}")
 
     def rest(self):
-        print(f"{self.name} отдыхает")
         self.__health += 1
+        print(self.name,"отдыхает" ,self.__health)
 
     @abstractmethod
     def attack(self):
-        pass 
+        pass
 
 class Warrior(Hero):
     def attack(self):
-        print(f"{self.name} атакует мечом")
+        print(self.name," воин атакует мечом")
 
 class Mage(Hero):
     def attack(self):
-        print(f"{self.name} атакует магией")
+        print(self.name, "Маг использует магию")
 
 class Assassin(Hero):
     def attack(self):
-        print(f"{self.name} атакует из под тишка")
+        print(self.name,"Ассассин атакует из-под тишка")
+
+Warrior = Warrior("Thor", 25, 250, 435)
+Mage = Mage("Deep", 34, 23, 435)
+Assassin = Assassin("Shadow", 25, 23, 235)
 
 
-warrior = Warrior("Геракл", 100, 20, 5)
-warrior.greet()
-warrior.rest()
-warrior.attack()
+Warrior.greet()
+Mage.greet()
+Assassin.greet()
 
-mage = Mage("Мерлин", 80, 30, 7)
-mage.greet()
-mage.rest()
-mage.attack()
+Warrior.attack()
+Mage.attack()
+Assassin.attack()
 
-assassin = Assassin("Шадоу", 70, 25, 6)
-assassin.greet()
-assassin.rest() 
-assassin.attack()
+Warrior.rest()
+Mage.rest()
+Assassin.rest()
+
+
+
+
